@@ -1,4 +1,14 @@
-Right now is more of a draft-in-progress, than done project
+Right now is more of a draft-in-progress, than done project with motivation being
+1. Fun of writing allocators(no comments here)
+2. Ability to have more precise control of memory allocation strategy, when needed.
+3. Improve my currently used implementations.
+
+Answering more general question WHY? 
+
+1. Std::pmr containers looks good, gut still more of a crutch to not so lucky std::allocator model, but maybe i will work on supporting them
+2. With all of infrastructure in place I personally think it will be easier to fix memory related problems if(when) they arise.
+
+Going on is more of a plans/about section
 
 Memory Resource Manager --> Memory Resource --> Memory Manager
 
@@ -13,10 +23,11 @@ Memory Resource Manager --> Memory Resource --> Memory Manager
 - Default_memory_manager
 - General_memory_manager - mix and mash, free_list + buckets or maybe just use mimalloc over provided memory ->
 - Bucketed_memory_manager
-- Linear_memory_manager
-- Scoped_memory_manager
+- Bump_memory_manager - Done
+- Stack_memory_manager - Done
+- Scoped_memory_manager - WIP 
 - Tagged_memory_manager ?
-- Debug_memory_manager_wrapper<Linear_memory_manager> ??
+-- Debug_memory_manager_wrapper<Linear_memory_manager> ??
 
 Default memory manager must be thin wrapper over new and delete.
 All memory managers must be wrappable in debug_memory_manager_wrapper for logging and other features i.e. changing OS protection for use-after-free detection
